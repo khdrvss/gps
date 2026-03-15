@@ -1,44 +1,73 @@
-# How to Start the Project
+# START PROJECT (Fresh Instructions)
 
-Use the Node dev server so dashboard and GPS API proxy run together (fixes browser fetch/CORS issues).
+This project runs as a static dashboard + local Node proxy server.
+Use the local server so browser/API requests work correctly (CORS-safe).
 
-## 1) Open terminal in project folder
+## 0) Requirements
+
+- Node.js installed (`node -v` should work)
+- Git installed (`git --version` should work)
+
+## 1) Get the project
+
+### Option A: Clone from GitHub
+
+```bash
+git clone https://github.com/khdrvss/gps.git
+cd gps
+```
+
+### Option B: If project already exists locally
 
 ```bash
 cd /home/ubuntu/projects/tbbgps
 ```
 
-## 2) Start dev server + proxy
+## 2) Start dev server
 
 ```bash
 node dev-server.js
 ```
 
-Default port is `8090`. You can change port:
-
-```bash
-PORT=8091 node dev-server.js
-```
-
-## 3) Open in browser
+Default URL:
 
 ```text
 http://127.0.0.1:8090/fleet-dashboard.html
 ```
 
-## 4) Stop server
+## 3) Open dashboard
 
-In the same terminal where server is running, press:
+Open this in browser:
 
 ```text
-Ctrl + C
+http://127.0.0.1:8090/fleet-dashboard.html
 ```
 
----
+## 4) (Optional) Run on different port
 
-## Quick checks
+```bash
+PORT=8091 node dev-server.js
+```
+
+Then open:
+
+```text
+http://127.0.0.1:8091/fleet-dashboard.html
+```
+
+## 5) Health check commands
 
 ```bash
 curl -I http://127.0.0.1:8090/fleet-dashboard.html
 curl -I http://127.0.0.1:8090/gps-api/api/v3/auth/check
+```
+
+Expected: HTTP status `200` for dashboard endpoint.
+
+## 6) Stop server
+
+In the running terminal, press:
+
+```text
+Ctrl + C
 ```
