@@ -1,0 +1,6 @@
+web app bot, qabul qilingan zayavkani gruppaga yuboradi. google sheets api integratsiya, https://docs.google.com/spreadsheets/d/1QyWRCaEUkTMFhEcssJPQksyrTJtKoE9S9if-Ke3nLXk/edit?pli=1&gid=0#gid=0 
+
+
+1. website xatolarini togirlash
+2. gitga joylash 
+3. server i
