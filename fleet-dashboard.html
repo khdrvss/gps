@@ -860,9 +860,7 @@
           deviceTypeId: null, parentId: null, unitId: null, customFields: null
         });
       }
-      // NOTE: this endpoint expects raw JSON array of int IDs, not object wrapper.
-      // Correct body example: [21673,21314]
-      getLastData(vehicleIds) { return this.request('/api/v3/vehicles/getlastdata', 'POST', vehicleIds); }
+      getLastData(vehicleIds) { return this.request('/api/v3/vehicles/getlastdata', 'POST', { VehiclesIds: vehicleIds }); }
       getMoveStop(params, options=null) { return this.request('/api/v3/vehicles/moveStop', 'POST', params, options || {}); }
       getFuelConsumption(params, options=null) { return this.request('/api/v3/vehicles/fuelConsumption', 'POST', params, options || {}); }
       getFuelInOut(params, options=null) { return this.request('/api/v3/vehicles/fuelInOut', 'POST', params, options || {}); }
@@ -2682,7 +2680,7 @@
 
             for (const payload of variants) {
               try {
-                const alt = await app.api.request('/api/v3/vehicles/getlastdata', 'POST', payload);
+                const alt = await app.api.request('/api/v3/vehicles/getlastdata', 'POST', { VehiclesIds: payload });
                 rows = arr(alt);
                 if (rows.length && rows.some(rowHasCoordinates)) break;
               } catch (_) {}
