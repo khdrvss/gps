@@ -743,10 +743,13 @@
       if (!vehicleId || !app.vehicles) return '';
       const v = app.vehicles.find(v => String(v.vehicleId) === String(vehicleId));
       const name = v?.vehicleNumber || v?.name || '';
-      const digits = name.replace(/[^0-9]/g, '');
-      const num = digits.length >= 3 ? digits.slice(-6) : '';
-      if (DUMP_TRUCK_PLATES.has(num)) return 'dump';
-      if (EXCAVATOR_PLATES.has(num)) return 'excavator';
+      const parts = name.split(/\s+/);
+      for (const p of parts) {
+        if (/^\d+$/.test(p)) {
+          if (DUMP_TRUCK_PLATES.has(p)) return 'dump';
+          if (EXCAVATOR_PLATES.has(p)) return 'excavator';
+        }
+      }
       return '';
     }
 
